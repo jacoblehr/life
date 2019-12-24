@@ -25,7 +25,7 @@ def handle_events(universe):
 		if(event.type == pygame.QUIT):
 			print("Destroying universe...")
 			sys.exit()
-		elif(event.type == pygame.MOUSEBUTTONDOWN):
+		elif(event.type == pygame.MOUSEBUTTONDOWN or event.type == pygame.MOUSEMOTION):
 			universe.handle_event(event)
 		elif(event.type == pygame.KEYDOWN and event.key == pygame.K_SPACE):
 			universe.simulate()

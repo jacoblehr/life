@@ -10,6 +10,7 @@ class Universe:
 	state = None
 	offset_x = 0
 	offset_y = 0
+	cell_hover = None
 
 	# Initialiser
 	def __init__(self, surface, offset_x=0, offset_y=0):
@@ -73,6 +74,11 @@ class Universe:
 		if(event.type == pygame.MOUSEBUTTONDOWN):
 			cell = self.get_cell(event.pos[0], event.pos[1])
 			if(cell != None):
+				cell.state = not cell.state
+		if(event.type == pygame.MOUSEMOTION and pygame.mouse.get_pressed()[0]):
+			cell = self.get_cell(event.pos[0], event.pos[1])
+			if(cell != None and self.cell_hover != cell):
+				self.cell_hover = cell
 				cell.state = not cell.state
 
 	def get_cell(self, x, y):
